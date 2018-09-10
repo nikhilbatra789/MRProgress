@@ -230,13 +230,14 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
     
     // Add timer to update valueLabel
     _valueLabelProgressPercentDifference = (progress - self.progress) * 100;
-    CFTimeInterval timerInterval =  self.animationDuration / ABS(_valueLabelProgressPercentDifference);
-    self.valueLabelUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:timerInterval
-                                                                  target:self
-                                                                selector:@selector(onValueLabelUpdateTimer:)
-                                                                userInfo:nil
-                                                                 repeats:YES];
-    
+    if (_valueLabelProgressPercentDifference > 0) {
+        CFTimeInterval timerInterval =  self.animationDuration / ABS(_valueLabelProgressPercentDifference);
+        self.valueLabelUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:timerInterval
+                                                                      target:self
+                                                                    selector:@selector(onValueLabelUpdateTimer:)
+                                                                    userInfo:nil
+                                                                     repeats:YES];
+    }
     
     _progress = progress;
 }
