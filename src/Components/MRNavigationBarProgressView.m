@@ -70,8 +70,7 @@ static NSNumberFormatter *progressNumberFormatter;
     progressView = [MRNavigationBarProgressView new];
     progressView.barView = navigationBar;
     
-    progressView.progressTintColor = navigationBar.tintColor
-        ? navigationBar.tintColor : UIApplication.sharedApplication.delegate.window.tintColor;
+    progressView.progressTintColor = navigationBar.tintColor;
     
     // Store bar and add to view hierachy
     navigationController.progressView = progressView;

@@ -659,7 +659,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     if (MRSystemVersionGreaterThanOrEqualTo8()) {
         self.bounds = (CGRect){CGPointZero, bounds.size};
     } else {
-        if ([self.superview isKindOfClass:UIWindow.class] && UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication.statusBarOrientation)) {
+        if ([self.superview isKindOfClass:UIWindow.class] && UIDeviceOrientationIsLandscape(UIDevice.currentDevice.orientation)) {
             // Swap width and height
             self.bounds = (CGRect){CGPointZero, {bounds.size.height, bounds.size.width}};
         } else {
