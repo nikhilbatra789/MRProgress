@@ -86,7 +86,7 @@
     NSNotificationCenter *center = NSNotificationCenter.defaultCenter;
     [center addObserver:self
                selector:@selector(statusBarOrientationDidChange:)
-                   name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
+                   name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
 - (void)unregisterFromNotificationCenter {
@@ -155,7 +155,7 @@
     
     // Absolute origin of receiver
     CGPoint origin = self.bounds.origin;
-    if (UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication.statusBarOrientation)) {
+    if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
         origin = CGPointMake(origin.y, origin.x);
     }
     origin = [self convertPoint:origin toView:window];
